@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import AddBudgetModal from "./components/AddBudgetModal";
 import BudgetCard from "./components/BudgetCard";
-import { SNACK_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext";
+import { useBudgets } from "./contexts/BudgetsContext";
 import AddFoodModal from "./components/AddFoodModal";
 import ViewFoodsModal from "./components/ViewFoodsModal";
-import SnackBudgetCard from "./components/SnackBudgetCard";
 import TotalBudgetCard from "./components/TotalBudgetCard";
 
 function App() {
@@ -24,10 +23,10 @@ function App() {
     <>
       <Container className="my-4">
         <h1 className="my-4 text-center">React.js Calorie Counter</h1>
-        <Button variant="primary" onClick={() => setShowAddBudgetModal(true)}>
+        <Button variant="success" onClick={() => setShowAddBudgetModal(true)}>
           Add Calorie Budget
         </Button>
-        <Button variant="success mx-3" onClick={openAddFoodModal}>
+        <Button variant="primary mx-3" onClick={openAddFoodModal}>
           Add Food Item
         </Button>
         <div
@@ -57,12 +56,6 @@ function App() {
               />
             );
           })}
-          <SnackBudgetCard
-            onAddFoodClick={openAddFoodModal}
-            onViewFoodsClick={() =>
-              setViewFoodsModalBudgetId(SNACK_BUDGET_ID)
-            }
-          />
         </div>
         <div
           class="my-5 mx-auto"

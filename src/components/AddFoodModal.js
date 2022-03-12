@@ -1,8 +1,8 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { useRef } from "react";
 import {
-  useBudgets,
-  SNACK_BUDGET_ID,
+  useBudgets
+  // SNACK_BUDGET_ID,
 } from "../contexts/BudgetsContext";
 
 export default function AddFoodModal({
@@ -49,7 +49,6 @@ export default function AddFoodModal({
           <Form.Group className="mb-3" controlId="budgetId">
             <Form.Label>Calorie Budget</Form.Label>
             <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef}>
-              <option id={SNACK_BUDGET_ID}>Snacks</option>
               {budgets.map((budget) => (
                 <option key={budget.id} value={budget.id}>
                   {budget.name}

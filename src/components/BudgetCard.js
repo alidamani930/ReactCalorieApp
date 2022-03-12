@@ -6,7 +6,6 @@ export default function BudgetCard({
   name,
   amount,
   max,
-  gray,
   hideButtons,
   onAddFoodClick,
   onViewFoodsClick,
@@ -14,9 +13,7 @@ export default function BudgetCard({
   const classNames = [];
   if (amount > max) {
     classNames.push("bg-danger", "bg-opacity-10");
-  } else if (gray) {
-    classNames.push("bg-light");
-  }
+  } 
   return (
     <Card className={classNames.join(" ")}>
       <Card.Body>
@@ -49,7 +46,7 @@ export default function BudgetCard({
             >
               Add Food Item
             </Button>
-            <Button variant="success" onClick={onViewFoodsClick}>
+            <Button variant="info" onClick={onViewFoodsClick}>
               View Food Items
             </Button>
           </Stack>

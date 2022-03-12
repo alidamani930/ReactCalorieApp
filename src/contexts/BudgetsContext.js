@@ -1,11 +1,8 @@
 import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import SnackBudgetCard from "../components/SnackBudgetCard";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const BudgetsContext = React.createContext();
-
-export const SNACK_BUDGET_ID = "Snacks";
 
 export function useBudgets() {
   return useContext(BudgetsContext);
@@ -31,20 +28,19 @@ export const BudgetsProvider = ({ children }) => {
       return [...prevBudgets, { id: uuidv4(), name, max }];
     });
   }
-  function deleteBudget({ id }) {
-    setFoods((prevFoods) => {
-      return prevFoods.map((food) => {
-        if (food.budgetId !== id) return food;
-        return { ...food, budgetId: SNACK_BUDGET_ID };
-      });
-    });
-    setBudgets((prevBudgets) => {
-      return prevBudgets.filter((budget) => budget.id !== id);
-    });
-  }
+
   function deleteFood({ id }) {
     setFoods((prevFoods) => {
       return prevFoods.filter((food) => food.id !== id);
+    });
+  }
+
+  function deleteBudget({ id }) {
+    setBudgets((prevBudgets) => {
+      return prevBudgets.filter((budget) => budget.id !== id);
+    });
+    foods.forEach((food) => {
+      if (food.budgetId === id) deleteFood(food);
     });
   }
 
